@@ -1,0 +1,199 @@
+<style>
+  i {
+    color:#FFF;
+}
+.btn-hover-transparent:hover
+{background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+
+}
+</style>
+<!--begin::Topbar-->
+<ng-container *ngIf="extraSearchDisplay">
+  <ng-container *ngIf="extrasSearchLayout === 'offcanvas'">
+    <!--begin::Search-->
+    <div class="topbar-item">
+      <div class="btn btn-icon btn-hover-transparent-white btn-lg btn-dropdown mr-1" id="kt_quick_search_toggle">
+        <span [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'" cacheSVG="true"
+          class="svg-icon svg-icon-xl"></span>
+      </div>
+    </div>
+    <!--end::Search-->
+  </ng-container>
+
+  <ng-container *ngIf="extrasSearchLayout === 'dropdown'" id="kt_quick_search_toggle">
+    <div class="dropdown" id="kt_quick_search_toggle" autoClose="outside" ngbDropdown>
+      <!--begin::Toggle-->
+      <div class="topbar-item" ngbDropdownToggle>
+        <div class="btn btn-icon btn-hover-transparent-white btn-lg btn-dropdown mr-1">
+          <span [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'" cacheSVG="true"
+            class="svg-icon svg-icon-xl"></span>
+        </div>
+      </div>
+      <!--end::Toggle-->
+
+      <!--begin::Dropdown-->
+      <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg" ngbDropdownMenu>
+        <app-search-dropdown-inner></app-search-dropdown-inner>
+      </div>
+      <!--end::Dropdown-->
+    </div>
+  </ng-container>
+</ng-container>
+<!-- begin chat -->
+<ng-container *ngIf="extrasNotificationsDisplay">
+  <ng-container *ngIf="extrasNotificationsLayout === 'offcanvas'">
+    <div class="topbar-item">
+      <div class="btn btn-icon btn-hover-transparent btn-dropdown btn-lg mr-1 pulse pulse-primary"
+        id="kt_quick_notifications_toggle">
+        <span matBadge="4" matBadgeOverlap="false">
+          <i class="flaticon-chat"></i>
+        </span>
+      
+        <!-- <span [inlineSVG]="'./assets/media/svg/icons/Communication/Chat-check.svg'" cacheSVG="true"
+          class="svg-icon svg-icon-xl"></span> -->
+        <!-- <span class="pulse-ring"></span> -->
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="extrasNotificationsLayout === 'dropdown'">
+    <!--begin::Notifications-->
+    <div class="dropdown" ngbDropdown placement="bottom">
+      <!--begin::Toggle-->
+      <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" ngbDropdownToggle>
+        <div class="btn btn-icon btn-hover-transparent btn-dropdown btn-lg mr-1 pulse pulse-primary">
+          <span matBadge="4" matBadgeOverlap="false">
+            <i  class="flaticon-chat"></i>
+          </span>
+          <!-- <span [inlineSVG]="'./assets/media/svg/icons/Communication/Chat-check.svg'" cacheSVG="true"
+            class="svg-icon svg-icon-xl"></span> -->
+          <!-- <span class="pulse-ring"></span> -->
+        </div>
+      </div>
+      <!--end::Toggle-->
+     
+      <!-- <kt-messenger [bgImage]="'./assets/media/misc/bg-2.jpg'" ngbTooltip="Messenger" [skin]="'dark'" [icon]="'./assets/media/icons/svg/Communication/Chat-check.svg'" [useSVG]="true"
+      [pulse]="true"
+      [pulseLight]="true"
+      
+      ></kt-messenger> -->
+      <!--begin::Dropdown-->
+      <div ngbDropdownMenu class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-lg">
+        <form>
+       
+        </form>
+      </div>
+      <!--end::Dropdown-->
+    </div>
+    <!--end::Notifications-->
+  </ng-container>
+</ng-container>
+<!-- end chat -->
+<ng-container *ngIf="extrasNotificationsDisplay">
+  <ng-container *ngIf="extrasNotificationsLayout === 'offcanvas'">
+    <!--begin::Notifications-->
+    <div  class="topbar-item">
+      <div class="btn btn-icon btn-hover-transparent-white btn-dropdown btn-lg mr-1 pulse pulse-primary"
+        id="kt_quick_notifications_toggle">
+        <!-- <span class="kt-header__topbar-icon" matBadge="{{count}}" matBadgeColor="warn"></span> -->
+        <!-- <span [inlineSVG]="'./assets/media/svg/icons/General/Notifications1.svg'" cacheSVG="true"
+          class="svg-icon svg-icon-xl"></span> -->
+       
+        <span   class="pulse-ring"></span>
+        <mat-icon matBadge="5" matBadgeColor="warn">notifications</mat-icon>
+      </div>
+    </div>
+    <!--end::Notifications-->
+  </ng-container>
+
+  <ng-container *ngIf="extrasNotificationsLayout === 'dropdown'">
+    <!--begin::Notifications-->
+    <div class="dropdown" ngbDropdown placement="bottom">
+      <!--begin::Toggle-->
+      <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" ngbDropdownToggle>
+        <div class="btn btn-icon btn-hover-transparent-white btn-dropdown btn-lg mr-1 pulse pulse-primary">
+          <!-- <span [inlineSVG]="'./assets/media/svg/icons/General/Notifications1.svg'" cacheSVG="true"
+            class="svg-icon svg-icon-xl"></span> -->
+          <span class="pulse-ring"></span>
+          <mat-icon matBadge="5" matBadgeColor="warn">notifications</mat-icon>
+        </div>
+      </div>
+      <!--end::Toggle-->
+     
+      <!-- <kt-messenger [bgImage]="'./assets/media/misc/bg-2.jpg'" ngbTooltip="Messenger" [skin]="'dark'" [icon]="'./assets/media/icons/svg/Communication/Chat-check.svg'" [useSVG]="true"
+      [pulse]="true"
+      [pulseLight]="true"
+      
+      ></kt-messenger> -->
+      <!--begin::Dropdown-->
+      <div ngbDropdownMenu class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-lg">
+        <form>
+          <app-notifications-dropdown-inner></app-notifications-dropdown-inner>
+        </form>
+      </div>
+      <!--end::Dropdown-->
+    </div>
+    <!--end::Notifications-->
+  </ng-container>
+</ng-container>
+
+
+
+
+
+
+
+<ng-container *ngIf="extrasLanguagesDisplay">
+  <app-language-selector style="margin-top: 20px"></app-language-selector>
+</ng-container>
+
+<ng-container *ngIf="extrasUserDisplay">
+  <ng-container *ngIf="extrasUserLayout === 'offcanvas'">
+    <ng-container *ngIf="user$ | async as _user">
+      <!--begin::User-->
+      <div class="topbar-item">
+        <div class="btn btn-icon btn-hover-transparent-white d-flex align-items-center btn-lg px-md-2 w-md-auto"
+          id="kt_quick_user_toggle">
+          <span class="text-white opacity-70 font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+          <span
+            class="text-white opacity-90 font-weight-bolder font-size-base d-none d-md-inline mr-4">{{ _user.username }}</span>
+          <span class="symbol symbol-35">
+            <span
+              class="symbol-label text-white font-size-h5 font-weight-bold bg-white-o-30">{{ _user.username[0] }}</span>
+          </span>
+        </div>
+      </div>
+      <!--end::User-->
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="extrasUserLayout === 'dropdown'">
+    <!--begin::User-->
+    <ng-container *ngIf="user$ | async as _user">
+      <div class="dropdown" ngbDropdown placement="bottom-right">
+        <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px" ngbDropdownToggle>
+          <div class="btn btn-icon btn-hover-transparent-white d-flex align-items-center btn-lg px-md-2 w-md-auto">
+            <span class="text-white opacity-70 font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+            <span
+              class="text-white opacity-90 font-weight-bolder font-size-base d-none d-md-inline mr-4">{{ _user.username }}</span>
+            <span class="symbol symbol-35">
+              <span
+                class="symbol-label text-white font-size-h5 font-weight-bold bg-white-o-30">{{ _user.username[0] }}</span>
+            </span>
+          </div>
+        </div>
+        <!--end::Toggle-->
+        <!--begin::Dropdown-->
+        <div ngbDropdownMenu
+          class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg p-0">
+          <app-user-dropdown-inner></app-user-dropdown-inner>
+        </div>
+      </div>
+      <!--end::Dropdown-->
+    </ng-container>
+    <!--end::User-->
+  </ng-container>
+</ng-container>
+
+<!--end::Topbar-->

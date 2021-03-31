@@ -1,0 +1,283 @@
+<style>
+    .khung {
+
+
+        position: fixed !important;
+        align-content: start;
+        height: 100%;
+
+
+    }
+     
+    .imgchat
+{
+    border-top: 2px solid #FFF!important;
+    margin-left: -7px!important;
+    height: 100px!important;
+    width: 100px!important;
+    margin-right: -7px!important;
+    margin-bottom: -3px;
+    margin-top: -22px;
+    
+}
+.onlyimg
+{
+    margin-top: -4px !important;
+  
+    margin-left: -7px!important;
+    height: 100px!important;
+    width: 100px!important;
+    margin-right: -7px!important;
+    margin-bottom: -4px!important;
+}
+.clear
+    {
+        border-radius: 50%;
+    }
+.clear:hover
+{
+
+    border-radius: 50%;
+    background:lightgray
+}
+    /* position: absolute; */
+
+
+
+    .kt-notification .kt-notification__item:after {
+        border: 0;
+        font-family: "LineAwesome";
+        text-decoration: inherit;
+        text-rendering: optimizeLegibility;
+        text-transform: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        /* font-smoothing: antialiased; */
+        content: "";
+        font-size: 0.8rem;
+        line-height: 0;
+        position: relative;
+        color: #74788d;
+    }
+
+    .input {
+        margin-left: 30px;
+
+    }
+
+    /* img {
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    } */
+
+     .imgavatar {
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    .avatar.-online {
+        position: relative;
+        overflow: visible;
+    }
+
+    .avatar.avatar-32 {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .avatar.-online:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid #fff;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        position: absolute;
+        right: -6px;
+        top: 28px;
+        background-color: #63b814;
+        z-index: 100;
+    }
+
+    .avatar.-ofline:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid #fff;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        position: absolute;
+        right: -6px;
+        top: 28px;
+        /* background-color: #63b814; */
+        z-index: 100;
+    }
+
+    .avatar.avatar-32.-circled,
+    .avatar.avatar-32.-circled>.more,
+    .avatar.avatar-32.-circled>.image {
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    /* .mat-card{
+  position: fixed;
+} */
+</style>
+<div style="height: 100%;">
+
+
+<div class="khung">
+
+    <mat-card class="users">
+
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+
+            <li [ngbNavItem]="1">
+                <a ngbNavLink>Danh sách bạn bè</a>
+           
+            
+                <!--  -->
+
+
+                <ng-template ngbNavContent>
+
+
+                    <div style="border-bottom: 1px solid #74788d;">
+
+                        <a href="javascript:;" class="kt-notification__item">
+                            <div class="kt-notification__item-icon">
+                                <mat-icon style="float: left;" class="search-icon">search_outline</mat-icon>
+                                <div class="input">
+                                    <form>
+                                        <input [formControl]="userControl" placeholder="Search " type="text">
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <!-- begin search user -->
+
+                        </a>
+                    </div>
+                    <div    class="navi navi-hover scroll my-4"
+                    data-scroll="true"
+                    style="position: relative; max-height: 450px;"
+                    perfectScrollbar>
+
+                        <div *ngFor="let item of listUser | async;let vi=index">
+
+                          
+
+                              
+                            <a href="javascript:;" style="    display: flex;
+                            flex-direction: row;
+                            margin-bottom: 20px;" class="kt-notification__item"
+                             >
+                                <!-- duyệt mảng -->
+                                <div class="kt-notification__item-icon">
+
+
+                                    <div style="margin-right: 20px;" class="kt-notification__item-icon">
+                                        <!-- icon mũi tên -->
+
+                                        <!-- kiểm tra điều kiện lưu trong mảng -->
+                                        <!-- *ngIf="item.acti==='false';then online;else offline" -->
+                                        <span *ngIf="item.TinhTrang===true;then online;else offline">
+
+                                        </span>
+                                        <ng-template #online>
+
+
+                                            <div class="avatar avatar-32 -circled -online">
+
+                                                <span *ngIf="item.hinhanh===null;then e1; else e2"></span>
+                                                <ng-template #e2>
+                                                    <div class="image">
+                                                        <img class="imgavatar" src="{{item.Avatar}}">
+
+                                                    </div>
+                                                </ng-template>
+
+                                                <ng-template #e1>
+                                                    <div class="image">
+                                                        <img class="imgavatar" src="../../assets/media/users/avatar_macdinh.jpg">
+
+                                                    </div>
+                                                </ng-template>
+
+                                            </div>
+                                        </ng-template>
+
+                                        <ng-template #offline>
+
+                                            <div class="avatar avatar-32 -circled -offline">
+
+                                                <span *ngIf="item.hinhanh===null;then e1; else e2"></span>
+                                                <ng-template #e2>
+                                                    <div class="image">
+                                                        <img  class="imgavatar"src="{{item.Avatar}}">
+
+                                                    </div>
+                                                </ng-template>
+
+                                                <ng-template #e1>
+                                                    <div class="image">
+                                                        <img class="imgavatar" src="../../assets/media/users/avatar_macdinh.jpg">
+
+                                                    </div>
+                                                </ng-template>
+
+                                            </div>
+                                        </ng-template>
+
+                                        <!-- <img src="./assets/media/users/avatar_tuan.jpg"  > -->
+
+                                    </div>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        {{item.Username}}
+                                    </div>
+                                    <span *ngIf="item.TinhTrang===false;then s1;else s2"></span>
+                                    <ng-template #s1>
+                                        <div class="kt-notification__item-time">
+                                            Offline
+                                        </div>
+                                    </ng-template>
+
+                                    <ng-template #s2>
+                                        <div class="kt-notification__item-time">
+                                            Online
+                                        </div>
+                                    </ng-template>
+
+                                </div>
+                            </a>
+
+
+
+                            
+                        </div>
+
+
+                    </div>
+                </ng-template>
+           
+        </li>
+
+        </ul>
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </mat-card>
+</div>
+
+</div>

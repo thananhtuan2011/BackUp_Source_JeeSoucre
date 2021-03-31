@@ -1,0 +1,31 @@
+
+<div class="bounds">
+    
+  <div class="content" 
+       fxLayout="row" 
+       fxLayout.xs="column" 
+     
+       fxFlexFill fxHide.yba 
+       style=" padding-top: 0px;background: #EEF0F8;"
+       >
+       
+      <div   style="margin-left: -20px;" fxFlex="18" class="sec1" fxFlex.xs="0">
+<app-content-left></app-content-left>
+      </div>
+      <!-- begin content-home -->
+      <div fxFlex="45" class="sec2" style="padding-left: 20px;" >
+        <router-outlet ></router-outlet>
+        <!-- ccc -->
+      </div>
+       <!-- begin content-home -->
+      <div fxFlex="20" class="sec3" fxFlex.xs="15">
+         <app-thong-diep></app-thong-diep>
+      
+      </div>
+      
+      <div fxFlex="22" class="sec4" fxFlex.xs="15" style="padding-left: 15px;">
+     <app-user-right></app-user-right>
+    </div>
+  </div>
+  
+</div>

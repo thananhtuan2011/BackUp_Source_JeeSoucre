@@ -1,0 +1,125 @@
+
+<style>
+    .div {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .title {
+        background-color: #f6f6f6;
+        text-align: center;
+        height: 50px;
+        padding-top: 5px;
+        margin-right: 7px;
+    }
+
+    .mat-icon:hover {
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+    }
+
+    span {
+        font-size: 15px;
+        font-weight: bold
+    }
+
+    .post {
+        text-align: center;
+        width: 200px;
+        margin-top: 32px;
+        background-color: rgb(243, 232, 232);
+        color: white;
+        margin-bottom: 10px;
+
+
+    }
+
+    .post:hover {
+        background-color: rgb(66, 26, 212);
+        color: white;
+    }
+</style>
+<div   class="scroll scroll-push"
+data-scroll="true"
+style="position: relative; max-height: 70vh;"
+perfectScrollbar >
+
+
+<div style="left: 400px; top:30px" >
+    <div class="title">
+        <button  style="float: right;" (click)="CloseDia()" mat-button mat-icon-button>
+            <i style="font-size: 15px;"  class="flaticon2-cancel-music"></i>
+          </button>
+    
+        <span>Đề Xuất Ý Tưởng</span>
+    </div>
+    <div style="display:flex;flex-direction: column; margin:15px">
+        <mat-form-field class="example-full-width">
+            <textarea matInput required placeholder="Tiêu Đề"
+                [(ngModel)]="dexuat.title"
+            >
+
+            </textarea>
+          </mat-form-field>
+    </div>
+
+
+
+    <div style=" margin:15px;">
+        <span>Nhập nội dung</span>
+        <textarea placeholder="Nhập nội dung !" style="border:1px solid lightcoral;outline: none;" rows="5" cols="70"
+            name="comment" form="usrform" [(ngModel)]="dexuat.NoiDung">
+           </textarea>
+    </div>
+
+    <div class="attachment">
+        <!-- up load file -->
+        <button style="float: right;" mat-icon-button type="button" (click)="hiddenfileinput.click()"
+          matTooltip="Upload File">
+          <mat-icon>attach_file</mat-icon>
+        </button>&nbsp;
+        <input type='file' id="PDFInpdd" #hiddenfileinput (change)="onSelectFile_PDF($event)" style="display: none;">
+        <!-- </div> -->
+      </div>
+  
+    <span *ngIf="dexuat.hinhanh!='';then c1;else c2"></span>
+
+    <ng-template #c1>
+        <span *ngIf="image;then k1;else k2 "></span>
+        <ng-template #k1>
+            <img style="width:480px;height: 250px;margin: 10px;" [src]="image" >
+        </ng-template>
+        <ng-template #k2>
+            <img style="width:480px;height: 250px;margin: 10px;" src="{{dexuat.image}}">
+        </ng-template>
+       
+    </ng-template>
+    <ng-template #c2>
+        <span *ngIf="image;then s1;else s2 "></span>
+        <ng-template #s1>
+            <div >
+                <img style="width:480px;height: 250px;margin: 10px;" [src]="image" >
+        </div>
+        </ng-template>
+        <ng-template #s2>
+            <span >
+                <!-- <img src="{{tinnhanh.image}}"> -->
+                <!-- <img style="width:480px;height: 250px;margin: 10px;" src="{{tinnhanh.image}}"> -->
+            </span>
+        </ng-template>
+    </ng-template>
+
+
+
+
+    <div style="text-align: center;">
+        <button class="post"(click)="onSubmit()">
+
+            <span style="font-size:14px; color:black">Cập Nhật</span>
+        </button>
+    </div>
+
+</div>
+</div>
